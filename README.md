@@ -20,6 +20,10 @@
 - **Trello** : [Tableau de suivi du projet](https://trello.com/invite/b/678b8f5fd76f3ad69e635a5e/ATTI4cf9f2bc45ca271d6b483b963efbf168B0D5AF10/tfe-au-fil-des-sentiers)
 - **Figma** : [Maquettes et design](https://www.figma.com/design/ua7rXgnEgDKrHfYIk4f39X/TFE-IFAPME?node-id=0-1&p=f&t=Z3Gdi7XsGBKnksMe-0)
 
+### Identifiant
+Identifiant admin : mehdikorichi@hotmail.com
+MDP : MDPadmin123
+
 ## 🏗️ Architecture technique
 
 Le projet adopte une architecture découplée avec une séparation stricte entre le frontend et le backend, hébergés séparément chez **Infomaniak** pour garantir une sécurité optimale et une meilleure scalabilité.
