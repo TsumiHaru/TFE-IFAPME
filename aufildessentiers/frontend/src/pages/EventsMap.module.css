@@ -1,0 +1,597 @@
+/* EventsMap.module.css - Styles pour la page des événements avec carte */
+.container {
+  min-height: 100vh;
+}
+
+.header {
+  color: white;
+  padding: 10px 10px;
+  text-align: center;
+  margin: 0 auto 20px auto;
+  max-width: 800px;
+}
+
+.header h1 {
+  margin: 0 0 8px 0;
+  font-size: 26px; /* slightly smaller */
+  font-weight: 600;
+  color: #2d5016 !important;
+  background: none !important;
+  -webkit-background-clip: unset !important;
+  background-clip: unset !important;
+  -webkit-text-fill-color: initial !important;
+  text-shadow: 0 4px 18px rgba(0,0,0,0.16);
+}
+
+.header p {
+  margin: 0;
+  font-size: 18px;
+  opacity: 0.95;
+  color: #065f46 !important;
+}
+
+.content {
+  display: flex;
+  height: calc(100vh - 200px); /* a bit shorter to reduce map dominance */
+  gap: 20px;
+}
+
+.mapContainer {
+  flex: 0.55; /* slightly smaller than before */
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  margin: 10px;
+}
+
+.map {
+  width: 100%;
+  height: 460px; 
+  border-radius: 12px;
+  box-shadow: var(--shadow-soft);
+}
+
+.sidebar {
+  flex: 0.45;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  border-left: 1px solid rgba(107, 142, 35, 0.1);
+  overflow-y: auto;
+  padding: 20px;
+  border-radius: var(--border-radius-lg);
+  box-shadow: var(--shadow-soft);
+}
+
+.sidebar h3 {
+  margin: 0 0 20px 0;
+  color: #333;
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.error {
+  background: #f8d7da;
+  color: #721c24;
+  padding: 15px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  border: 1px solid #f5c6cb;
+}
+
+.eventsList {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.eventCard {
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(5px);
+  border: 1px solid rgba(107, 142, 35, 0.1);
+  border-radius: var(--border-radius);
+  padding: 20px;
+  transition: var(--transition-smooth);
+  box-shadow: var(--shadow-soft);
+}
+
+.eventCard:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-medium);
+  border-color: var(--accent-green);
+}
+
+.eventCard h4 {
+  margin: 0 0 10px 0;
+  color: #333;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.eventCard p {
+  margin: 5px 0;
+  color: #666;
+  font-size: 14px;
+}
+
+.description {
+  font-style: italic;
+  color: #888 !important;
+  margin-top: 10px !important;
+}
+
+.actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 15px;
+}
+
+.button {
+  background: #667eea;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 6px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.button:hover {
+  background: #5a6fd8;
+  transform: translateY(-1px);
+}
+
+.joinButton {
+  background: #28a745;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 6px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.joinButton:hover {
+  background: #218838;
+  transform: translateY(-1px);
+}
+
+.leaveButton {
+  background: #dc3545;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 6px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.leaveButton:hover {
+  background: #c82333;
+  transform: translateY(-1px);
+}
+
+.pendingStatus {
+  background: #fff3cd;
+  color: #856404;
+  padding: 8px 16px;
+  border-radius: 6px;
+  font-size: 14px;
+  border: 1px solid #ffeaa7;
+  display: inline-block;
+}
+
+.rejectedStatus {
+  background: #f8d7da;
+  color: #721c24;
+  padding: 8px 16px;
+  border-radius: 6px;
+  font-size: 14px;
+  border: 1px solid #f5c6cb;
+  display: inline-block;
+}
+
+.approvedStatus {
+  background: #d4edda;
+  color: #155724;
+  padding: 8px 16px;
+  border-radius: 6px;
+  font-size: 14px;
+  border: 1px solid #c3e6cb;
+  display: inline-block;
+  font-weight: 500;
+}
+
+.loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 400px;
+  color: #666;
+}
+
+.spinner {
+  width: 40px;
+  height: 40px;
+  border: 4px solid #f3f3f3;
+  border-top: 4px solid #667eea;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin-bottom: 20px;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Modal styles */
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.modalContent {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(20px);
+  border-radius: var(--border-radius-lg);
+  padding: 30px;
+  max-width: min(900px, 90%);
+  width: 90%;
+  max-height: 80vh;
+  overflow-y: auto;
+  overflow-x: hidden; /* prevent horizontal scrolling if image is wide */
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* center image and content */
+  position: relative;
+  box-shadow: var(--shadow-strong);
+  border: 1px solid rgba(107, 142, 35, 0.1);
+}
+
+.closeButton {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background: rgba(255,255,255,0.95);
+  border: 1px solid rgba(0,0,0,0.06);
+  font-size: 22px;
+  cursor: pointer;
+  color: #333;
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: transform 0.18s ease, box-shadow 0.18s ease;
+  box-shadow: 0 6px 14px rgba(10,20,10,0.08);
+}
+
+.closeButton:hover {
+  transform: translateY(-2px) scale(1.04);
+  box-shadow: 0 10px 20px rgba(10,20,10,0.12);
+}
+
+.closeButton:focus {
+  outline: none;
+  box-shadow: 0 0 0 4px rgba(34,139,87,0.12);
+}
+
+.modalContent h2 {
+  margin: 0 0 20px 0;
+  color: #333;
+  font-size: 24px;
+  font-weight: 600;
+}
+
+/* Image shown in the event detail modal - keep it contained */
+.detailImage {
+  width: auto;
+  max-width: 720px; /* limit width so image doesn't become too wide */
+  height: auto;
+  max-height: 36vh; /* smaller max height for nicer layout */
+  object-fit: contain; /* preserve aspect ratio */
+  border-radius: 8px;
+  margin-bottom: 16px;
+  display: block;
+  box-sizing: border-box;
+}
+
+.modalContent p {
+  margin: 10px 0;
+  color: #666;
+  line-height: 1.6;
+}
+
+.modalActions {
+  margin-top: 25px;
+  display: flex;
+  gap: 15px;
+}
+
+/* Ajoute ces styles à ton EventsMap.module.css existant */
+
+/* Ajouter de l'espace en haut */
+.container {
+  margin-top: 2rem;
+}
+
+/* Filtres */
+.filters {
+  background: #f8f9fa;
+  border-radius: 0.75rem;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  border: 2px solid #e5e7eb;
+}
+
+.filterGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-bottom: 0.75rem;
+}
+
+.filterGroup:last-child {
+  margin-bottom: 0;
+}
+
+.filterGroup label {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #374151;
+}
+
+.filterSelect {
+  padding: 0.5rem 0.75rem;
+  border: 2px solid #d1d5db;
+  border-radius: 0.5rem;
+  background: white;
+  font-size: 0.875rem;
+  color: #1f2937;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.filterSelect:hover {
+  border-color: #10b981;
+}
+
+.filterSelect:focus {
+  outline: none;
+  border-color: #10b981;
+  box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.1);
+}
+
+.resultsCount {
+  font-size: 0.875rem;
+  color: #6b7280;
+  padding: 0.5rem 0;
+  margin-bottom: 0.75rem;
+  text-align: center;
+  font-weight: 500;
+}
+
+/* Responsive filtres */
+@media (min-width: 768px) {
+  .filters {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+  }
+
+  .filterGroup {
+    margin-bottom: 0;
+  }
+}
+
+@media (max-width: 767px) {
+  .container {
+    margin-top: 1rem;
+  }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .content {
+    flex-direction: column;
+    height: auto;
+  }
+  
+  .sidebar {
+    width: 100%;
+    max-height: 400px;
+  }
+  
+  .mapContainer {
+    height: 400px;
+  }
+
+  /* On small screens, make modal images even smaller to avoid covering most of the page */
+  .modalContent img,
+  .detailImage {
+    max-width: 90%;
+    max-height: 34vh;
+  }
+  
+  .header h1 {
+    font-size: 24px;
+  }
+  
+  .header p {
+    font-size: 16px;
+  }
+}
+
+/* Styles pour les popups Leaflet */
+:global(.event-popup) {
+  font-family: Arial, sans-serif;
+}
+
+:global(.event-popup h3) {
+  margin: 0 0 10px 0;
+  color: #333;
+  font-size: 16px;
+}
+
+:global(.event-popup p) {
+  margin: 5px 0;
+  color: #666;
+  font-size: 14px;
+}
+
+:global(.event-popup .btn) {
+  background: #667eea;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 12px;
+  margin-top: 10px;
+}
+
+:global(.event-popup .btn:hover) {
+  background: #5a6fd8;
+}
+
+/* Ensure images in Leaflet popups are constrained as well */
+:global(.event-popup img) {
+  width: 100%;
+  height: 96px;
+  object-fit: cover;
+  border-radius: 6px;
+  margin-bottom: 8px;
+}
+
+.titleUnderline {
+  width: 23rem;
+  height: 0.25rem;
+  background: linear-gradient(to right, #10b981, #f59e0b);
+  margin: 0 auto;
+  border-radius: 9999px;
+}
+
+/* Also ensure any image inside the modal content cannot overflow */
+.modalContent img {
+  display: block;
+  margin: 0 auto 16px auto;
+  max-width: 100%;
+  height: auto;
+  box-sizing: border-box;
+}
+
+/* Ajoute/remplace ces styles dans ton EventsMap.module.css */
+
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2000;
+  padding: 20px;
+  overflow-y: auto;
+}
+
+.modalContent {
+  background: white;
+  border-radius: 1rem;
+  padding: 2rem;
+  max-width: 600px;
+  width: 100%;
+  max-height: 90vh;
+  overflow-y: auto;
+  position: relative;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+}
+
+.closeButton {
+  position: fixed; /* Changé de absolute à fixed */
+  top: 20px;
+  right: 20px;
+  background: #ef4444;
+  color: white;
+  border: none;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  font-size: 28px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  z-index: 2001;
+  box-shadow: 0 4px 12px rgba(239, 68, 68, 0.4);
+  line-height: 1;
+}
+
+.closeButton:hover {
+  background: #dc2626;
+  transform: scale(1.1) rotate(90deg);
+  box-shadow: 0 6px 16px rgba(239, 68, 68, 0.6);
+}
+
+.closeButton:active {
+  transform: scale(0.95) rotate(90deg);
+}
+
+/* Version alternative : bouton à l'extérieur du contenu */
+.closeButtonOuter {
+  position: fixed;
+  top: 10px;
+  right: 10px;
+  background: white;
+  color: #ef4444;
+  border: 2px solid #ef4444;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  font-size: 24px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  z-index: 2001;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.closeButtonOuter:hover {
+  background: #ef4444;
+  color: white;
+  transform: scale(1.1) rotate(90deg);
+}
+
+@media (max-width: 768px) {
+  .closeButton,
+  .closeButtonOuter {
+    width: 40px;
+    height: 40px;
+    font-size: 24px;
+    top: 10px;
+    right: 10px;
+  }
+
+  .modalContent {
+    padding: 1.5rem;
+    padding-top: 3rem;
+  }
+}

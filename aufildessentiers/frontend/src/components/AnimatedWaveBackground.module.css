@@ -1,0 +1,92 @@
+.waveContainer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background: linear-gradient(180deg, #fbfbfb 0%, #f4f8f6 100%);
+  z-index: -1;
+  overflow: hidden;
+}
+
+.wave1,
+.wave2,
+.wave3 {
+  position: absolute;
+  width: 200%;
+  height: auto;
+}
+
+.wave1 {
+  bottom: 60%;
+  left: 0;
+  fill: rgba(46, 139, 87, 0.25);
+  animation: wave 20s linear infinite;
+}
+
+.wave2 {
+  bottom: 35%;
+  left: 0;
+  fill: rgba(60, 179, 113, 0.2);
+  animation: wave 15s linear infinite reverse;
+}
+
+.wave3 {
+  bottom: 10%;
+  left: 0;
+  fill: rgba(79, 184, 128, 0.18);
+  animation: wave 25s linear infinite;
+}
+
+@keyframes wave {
+  0% {
+    transform: translateX(-50%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+.waveOverlay {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    180deg,
+    rgba(244, 248, 246, 0.3) 0%,
+    transparent 30%,
+    transparent 70%,
+    rgba(244, 248, 246, 0.5) 100%
+  );
+  pointer-events: none;
+}
+
+/* Mode sombre */
+[data-theme="dark"] .waveContainer {
+  background: linear-gradient(180deg, #0f1419 0%, #1a2420 100%);
+}
+
+[data-theme="dark"] .waveOverlay {
+  background: linear-gradient(
+    180deg,
+    rgba(26, 36, 32, 0.3) 0%,
+    transparent 30%,
+    transparent 70%,
+    rgba(26, 36, 32, 0.6) 100%
+  );
+}
+
+[data-theme="dark"] .wave1 {
+  fill: rgba(143, 188, 143, 0.3);
+}
+
+[data-theme="dark"] .wave2 {
+  fill: rgba(143, 188, 143, 0.25);
+}
+
+[data-theme="dark"] .wave3 {
+  fill: rgba(143, 188, 143, 0.2);
+}

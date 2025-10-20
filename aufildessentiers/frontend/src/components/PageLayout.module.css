@@ -1,0 +1,19 @@
+/* PageLayout.module.css - Layout simple pour le contenu */
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  min-height: calc(100vh - 120px);
+  width: 100%;
+  padding: 2rem;
+  position: relative;
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 1rem;
+  }
+}
+

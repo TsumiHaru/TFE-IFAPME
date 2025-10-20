@@ -1,0 +1,373 @@
+:root { 
+  --hero-max: 1100px; 
+}
+
+.heroArea {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1rem 1rem;
+  min-height: calc(100vh - 120px);
+  background: linear-gradient(180deg, #fbfbfb, #f4f8f6);
+  border-radius: 14px;
+}
+
+.heroCard {
+  width: 100%;
+  max-width: var(--hero-max);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+  padding: 2.5rem;
+  border-radius: 18px;
+  background: white;
+  box-shadow: 0 12px 40px rgba(30,50,30,0.06);
+  overflow: hidden;
+  position: relative;
+}
+
+.heroText { 
+  flex: 1.2; 
+}
+
+.heroText h1 { 
+  margin: 0 0 0.6rem 0; 
+  font-size: 1.9rem; 
+  color: #123; 
+  line-height: 1.05;
+}
+
+.lead { 
+  color: #476; 
+  margin-bottom: 1rem; 
+  font-size: 1.02rem; 
+}
+
+.ctas { 
+  display: flex; 
+  gap: 12px; 
+  margin-top: 1rem; 
+}
+
+.primary { 
+  background: linear-gradient(90deg, #2E8B57, #3CB371); 
+  color: white; 
+  padding: 10px 18px; 
+  border-radius: 10px; 
+  border: none; 
+  cursor: pointer;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(46, 139, 87, 0.3);
+}
+
+.ghost { 
+  background: transparent; 
+  border: 1px solid rgba(30, 30, 30, 0.08); 
+  padding: 10px 18px; 
+  border-radius: 10px; 
+  color: #123;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.ghost:hover { 
+  color: #0b3b22; 
+  background: rgba(10, 20, 10, 0.02); 
+  border-color: rgba(30, 30, 30, 0.15);
+}
+
+.heroVisual { 
+  width: 240px; 
+  height: 160px; 
+  position: relative; 
+}
+
+.pulse { 
+  width: 100%; 
+  height: 100%; 
+  border-radius: 12px; 
+  background: linear-gradient(135deg, rgba(46, 139, 87, 0.12), rgba(60, 179, 113, 0.12)); 
+  animation: float 6s ease-in-out infinite; 
+}
+
+.inlineSvg { 
+  width: 100%; 
+  height: 100%; 
+  display: block; 
+}
+
+@keyframes float { 
+  0% { 
+    transform: translateY(0px); 
+  } 
+  50% { 
+    transform: translateY(-10px) rotate(-1deg); 
+  } 
+  100% { 
+    transform: translateY(0px); 
+  } 
+}
+
+/* Section Présentation */
+.presentationSection {
+  width: 100%;
+  max-width: var(--hero-max);
+  margin: 2rem 0;
+  padding: 3rem 2rem;
+  background: linear-gradient(135deg, rgba(107, 142, 35, 0.08), rgba(143, 188, 143, 0.08));
+  border-radius: 16px;
+  border: 1px solid rgba(107, 142, 35, 0.15);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+}
+
+.presentationSection h2 {
+  font-size: 1.8rem;
+  color: #2E8B57;
+  margin: 0 0 2rem 0;
+  text-align: center;
+  font-weight: 700;
+  position: relative;
+  padding-bottom: 1rem;
+}
+
+.presentationSection h2::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 3px;
+  background: linear-gradient(90deg, #2E8B57, #3CB371);
+  border-radius: 2px;
+}
+
+.presentationContent {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.presentationText {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.presentationText p {
+  font-size: 1rem;
+  line-height: 1.7;
+  color: #333;
+  margin: 0;
+  text-align: justify;
+}
+
+.presentationText p strong {
+  color: #2E8B57;
+  font-weight: 600;
+}
+
+/* Reviews Section */
+.reviews { 
+  width: 100%; 
+  max-width: var(--hero-max); 
+}
+
+.reviews h3 { 
+  margin-bottom: 1rem; 
+  color: #123;
+  font-size: 1.4rem;
+}
+
+.reviewsGrid { 
+  display: grid; 
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); 
+  gap: 1rem; 
+}
+
+.review { 
+  background: #fff; 
+  padding: 1.25rem; 
+  border-radius: 12px; 
+  box-shadow: 0 8px 20px rgba(20, 30, 20, 0.04); 
+  transform: translateY(10px); 
+  opacity: 0; 
+  animation: reveal .6s forwards; 
+  color: #234; 
+}
+
+.review:nth-child(1) { 
+  animation-delay: 0.05s; 
+}
+
+.review:nth-child(2) { 
+  animation-delay: 0.15s; 
+}
+
+.review:nth-child(3) { 
+  animation-delay: 0.25s; 
+}
+
+.review p {
+  margin: 0 0 0.5rem 0;
+  font-style: italic;
+}
+
+.review cite {
+  display: block;
+  margin-top: 0.75rem;
+  font-style: normal;
+  color: #2E8B57;
+  font-weight: 500;
+}
+
+@keyframes reveal { 
+  to { 
+    transform: translateY(0); 
+    opacity: 1; 
+  } 
+}
+
+/* Mode Sombre */
+[data-theme="dark"] .presentationSection {
+  background: linear-gradient(135deg, rgba(107, 142, 35, 0.15), rgba(143, 188, 143, 0.1));
+  border-color: rgba(107, 142, 35, 0.3);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+}
+
+[data-theme="dark"] .presentationSection h2 {
+  color: #8fbc8f;
+}
+
+[data-theme="dark"] .presentationSection h2::after {
+  background: linear-gradient(90deg, #8fbc8f, #9acd32);
+}
+
+[data-theme="dark"] .presentationText p {
+  color: #d0d0d0;
+}
+
+[data-theme="dark"] .presentationText p strong {
+  color: #8fbc8f;
+}
+
+[data-theme="dark"] .heroArea {
+  background: linear-gradient(180deg, #0f1419, #1a2420);
+}
+
+[data-theme="dark"] .heroCard {
+  background: #1a2420;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
+}
+
+[data-theme="dark"] .heroText h1 {
+  color: #e6f3ff;
+}
+
+[data-theme="dark"] .lead {
+  color: #b0c4a0;
+}
+
+[data-theme="dark"] .ghost {
+  border-color: rgba(230, 243, 255, 0.2);
+  color: #e6f3ff;
+}
+
+[data-theme="dark"] .ghost:hover {
+  background: rgba(230, 243, 255, 0.05);
+}
+
+[data-theme="dark"] .reviews h3 {
+  color: #e6f3ff;
+}
+
+[data-theme="dark"] .review {
+  background: #1a2420;
+  color: #d0d0d0;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+}
+
+[data-theme="dark"] .review cite {
+  color: #8fbc8f;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .heroCard { 
+    flex-direction: column-reverse; 
+    align-items: stretch; 
+  }
+  
+  .heroVisual { 
+    width: 100%; 
+    height: 120px; 
+  }
+}
+
+@media (max-width: 768px) {
+  .heroArea {
+    padding: 2rem 1rem;
+    gap: 1.5rem;
+  }
+
+  .heroCard {
+    padding: 1.5rem;
+    gap: 1.5rem;
+  }
+
+  .heroText h1 {
+    font-size: 1.5rem;
+  }
+
+  .lead {
+    font-size: 0.95rem;
+  }
+
+  .ctas {
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+
+  .primary,
+  .ghost {
+    padding: 8px 14px;
+    font-size: 0.9rem;
+  }
+
+  .presentationSection {
+    padding: 2rem 1.5rem;
+    margin: 1.5rem 0;
+  }
+
+  .presentationSection h2 {
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .presentationText p {
+    font-size: 0.95rem;
+    text-align: left;
+  }
+
+  .presentationText {
+    gap: 1rem;
+  }
+
+  .reviews h3 {
+    font-size: 1.1rem;
+  }
+
+  .reviewsGrid {
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+  }
+
+  .review {
+    padding: 1rem;
+  }
+}

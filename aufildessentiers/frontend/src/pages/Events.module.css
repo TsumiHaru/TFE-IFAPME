@@ -1,0 +1,172 @@
+.eventsPage {
+  text-align: center;
+  background-color: #2d4b36;
+  color: white;
+  padding: 20px;
+  width: 100vw;
+  max-width: 100vw; /* Évite les débordements */
+  box-sizing: border-box; /* Assure que padding ne cause pas de dépassement */
+}
+
+.error {
+  color: #ff6b6b;
+  background-color: rgba(255, 107, 107, 0.1);
+  padding: 10px;
+  border-radius: 5px;
+  margin: 10px 0;
+}
+
+.mapContainer {
+  margin: auto;
+  width: 90%;
+  max-width: 800px;
+  border-radius: 15px;
+  overflow: hidden;
+}
+
+.map {
+  width: 100%;
+  height: 400px;
+  border-radius: 15px;
+}
+
+.eventGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+  padding: 20px;
+  justify-items: center;
+}
+
+.eventCard {
+  background-color: #F3A07F;
+  border-radius: 10px;
+  padding: 15px;
+  text-align: center;
+  color: white;
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
+  width: 100%;
+  max-width: 220px;
+}
+
+.eventImageContainer {
+  margin-bottom: 10px;
+  border-radius: 8px;
+  overflow: hidden;
+  width: 100%;
+}
+
+.eventCard img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  display: block;
+}
+
+.eventCard h3 {
+  background-color: #CE592A;
+  color: #5a3215;
+  padding: 8px;
+  border-radius: 5px;
+  display: inline-block;
+  margin-top: 10px;
+  margin-bottom: 15px;
+  width: 90%;
+}
+
+.eventInfo {
+  padding: 15px;
+}
+
+.eventInfo h3 {
+  margin: 0 0 10px 0;
+  font-size: 1.2em;
+  color: #333;
+}
+
+.eventLocation, .eventDate {
+  margin: 5px 0;
+  color: #666;
+  font-size: 0.9em;
+}
+
+.detailsButton {
+  background-color: #4CAF50;
+  color: white;
+  padding: 10px 15px;
+  margin-top: 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.detailsButton:hover {
+  background-color: #45a049;
+}
+
+.selectedEventDetails {
+  background: #F3A07F;
+  padding: 15px;
+  border-radius: 10px;
+  max-width: 600px;
+  margin: 20px auto;
+  color: white;
+}
+
+.eventFullDetails h2 {
+  margin: 0 0 20px 0;
+  color: #333;
+}
+
+.detailsGrid {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 20px;
+}
+
+.detailsInfo p {
+  margin: 10px 0;
+  color: #444;
+}
+
+.description {
+  margin-top: 20px;
+  line-height: 1.6;
+}
+
+.detailsImage {
+  height: 300px;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.detailsImage img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+@media (max-width: 768px) {
+  .detailsGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .detailsImage {
+    height: 200px;
+  }
+
+  .eventGrid {
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  }
+}
+
+.noEvents {
+  grid-column: 1 / -1;
+  text-align: center;
+  padding: 20px;
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  color: #f8f8f8;
+  font-size: 1.2em;
+}

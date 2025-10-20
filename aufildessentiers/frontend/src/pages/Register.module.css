@@ -1,0 +1,66 @@
+.container { max-width: 960px; margin: 3rem auto; padding: 1rem; }
+
+.card { display:grid; grid-template-columns:1fr 1fr; border-radius:12px; overflow:hidden; box-shadow:0 12px 40px rgba(10,20,10,0.06); }
+
+.hero { padding:2rem; background: linear-gradient(135deg, var(--primary-green), var(--secondary-green)); color:white; display:flex;align-items:center;justify-content:center;flex-direction:column; }
+
+.hero h1 { margin:0; font-size:1.6rem }
+
+/* Ensure hero text is readable */
+.hero h1 { 
+	background: none !important;
+	-webkit-background-clip: unset !important;
+	background-clip: unset !important;
+	-webkit-text-fill-color: initial !important;
+	color: rgba(255,255,255,0.95) !important;
+	text-shadow: 0 4px 14px rgba(0,0,0,0.18);
+}
+
+.hero p { color: rgba(255,255,255,0.92) !important; margin-top:0.5rem }
+.formWrap { padding:2rem; background:#fff; display:flex; flex-direction:column; gap:1rem; }
+.input { padding:12px; border-radius:10px; border:1px solid rgba(20,20,20,0.06); width:100%;margin: 5px; }
+.button { padding:12px; border-radius:10px; border:none; background: linear-gradient(90deg,#2E8B57,#3CB371); color:white; cursor:pointer; margin: 5px; }
+.alt { text-align:center; font-size:0.9rem; color: rgba(0,0,0,0.6) }
+/* Message (success / error) - forced black to remain visible per request */
+.message { color: #000 !important; margin-top: 1rem; }
+@media (max-width:800px) { .card { grid-template-columns: 1fr } }
+  
+
+
+.formGroup {
+  margin-bottom: 1.5rem;
+  position: relative;
+}
+
+.fieldError {
+  display: block;
+  margin-top: 0.5rem;
+  font-size: 0.85rem;
+  color: #dc2626;
+  font-weight: 500;
+}
+
+.inputError {
+  border: 2px solid #dc2626 !important;
+  background: #fef8f8 !important;
+}
+
+.success {
+  background: #f0f8f5;
+  color: #2E8B57;
+  padding: 1rem;
+  border-radius: 8px;
+  margin-bottom: 1.5rem;
+  border-left: 4px solid #2E8B57;
+  font-weight: 500;
+}
+
+.error {
+  background: #fef2f2;
+  color: #dc2626;
+  padding: 1rem;
+  border-radius: 8px;
+  margin-bottom: 1.5rem;
+  border-left: 4px solid #dc2626;
+  font-weight: 500;
+}

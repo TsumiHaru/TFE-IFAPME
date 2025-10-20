@@ -1,0 +1,222 @@
+@import 'leaflet/dist/leaflet.css';
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+:root {
+  /* Couleurs nature - Mode clair */
+  --primary-green: #2d5016;
+  --secondary-green: #4a7c59;
+  --accent-green: #6b8e23;
+  --light-green: #9acd32;
+  --sage-green: #87a96b;
+  --earth-brown: #8b4513;
+  --warm-beige: #f5f5dc;
+  --cream: #faf0e6;
+  --soft-white: #fefefe;
+  --text-dark: #2c3e50;
+  --text-medium: #5d6d7e;
+  --text-light: #85929e;
+  
+  /* Couleurs nature - Mode sombre */
+  --dark-forest: #1a2e1a;
+  --dark-sage: #2d4a2d;
+  --moonlight: #e6f3ff;
+  --night-sky: #0f1419;
+  --star-light: #f0f8ff;
+  
+  /* Variables communes */
+  --border-radius: 12px;
+  --border-radius-lg: 20px;
+  --shadow-soft: 0 4px 20px rgba(45, 80, 22, 0.1);
+  --shadow-medium: 0 8px 30px rgba(45, 80, 22, 0.15);
+  --shadow-strong: 0 12px 40px rgba(45, 80, 22, 0.2);
+  --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-bounce: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  line-height: 1.6;
+  font-weight: 400;
+  color: var(--text-dark);
+  background: linear-gradient(135deg, var(--cream) 0%, var(--warm-beige) 100%);
+  min-height: 100vh;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Animations de la nature */
+@keyframes gentle-sway {
+  0%, 100% { transform: translateX(0) rotate(0deg); }
+  25% { transform: translateX(2px) rotate(0.5deg); }
+  75% { transform: translateX(-2px) rotate(-0.5deg); }
+}
+
+@keyframes leaf-fall {
+  0% { transform: translateY(-100vh) rotate(0deg); opacity: 1; }
+  100% { transform: translateY(100vh) rotate(360deg); opacity: 0; }
+}
+
+@keyframes breathe {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.02); }
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+/* Éléments de base */
+a {
+  font-weight: 500;
+  color: var(--secondary-green);
+  text-decoration: none;
+  transition: var(--transition-smooth);
+}
+
+a:hover {
+  color: var(--accent-green);
+  text-shadow: 0 0 8px rgba(107, 142, 35, 0.3);
+}
+
+html, body {
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  background-attachment: fixed;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: var(--primary-green);
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+h1 {
+  font-size: 2.5rem;
+  background: linear-gradient(135deg, var(--primary-green), var(--accent-green));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+button {
+  border-radius: var(--border-radius);
+  border: 2px solid transparent;
+  padding: 12px 24px;
+  font-size: 1rem;
+  font-weight: 500;
+  font-family: inherit;
+  background: linear-gradient(135deg, var(--secondary-green), var(--accent-green));
+  color: var(--soft-white);
+  cursor: pointer;
+  transition: var(--transition-smooth);
+  box-shadow: var(--shadow-soft);
+  position: relative;
+  overflow: hidden;
+}
+
+button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+  transition: left 0.5s;
+}
+
+button:hover::before {
+  left: 100%;
+}
+
+button:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-medium);
+  border-color: var(--light-green);
+}
+
+button:active {
+  transform: translateY(0);
+  box-shadow: var(--shadow-soft);
+}
+
+button:focus,
+button:focus-visible {
+  outline: 3px solid var(--light-green);
+  outline-offset: 2px;
+}
+
+/* Effets de végétation animée - Fond global */
+.nature-bg {
+  position: relative;
+  overflow: hidden;
+  min-height: 100vh;
+}
+
+.nature-bg::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: 
+    radial-gradient(circle at 20% 80%, rgba(107, 142, 35, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(74, 124, 89, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 40% 40%, rgba(135, 169, 107, 0.1) 0%, transparent 50%);
+  animation: breathe 8s ease-in-out infinite;
+  pointer-events: none;
+  z-index: -1;
+}
+
+.nature-bg::after {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: 
+    linear-gradient(135deg, var(--cream) 0%, var(--warm-beige) 100%);
+  z-index: -2;
+}
+
+/* Mode sombre */
+[data-theme="dark"] {
+  --primary-green: #4a7c59;
+  --secondary-green: #6b8e23;
+  --accent-green: #9acd32;
+  --light-green: #87a96b;
+  --sage-green: #2d4a2d;
+  --earth-brown: #a0522d;
+  --warm-beige: #1a2e1a;
+  --cream: #0f1419;
+  --soft-white: #e6f3ff;
+  --text-dark: #f0f8ff;
+  --text-medium: #b8c5d1;
+  --text-light: #85929e;
+  
+  background: linear-gradient(135deg, var(--night-sky) 0%, var(--dark-forest) 100%);
+}
+
+[data-theme="dark"] .nature-bg::before {
+  background-image: 
+    radial-gradient(circle at 20% 80%, rgba(107, 142, 35, 0.2) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(74, 124, 89, 0.2) 0%, transparent 50%),
+    radial-gradient(circle at 40% 40%, rgba(135, 169, 107, 0.2) 0%, transparent 50%);
+}
+
+[data-theme="dark"] .nature-bg::after {
+  background: 
+    linear-gradient(135deg, var(--night-sky) 0%, var(--dark-forest) 100%);
+}
+
+/* Leaflet CSS */
+

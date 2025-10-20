@@ -1,0 +1,53 @@
+.container {
+  max-width: 960px;
+  margin: 3rem auto;
+  padding: 1rem;
+}
+
+.forgotPasswordLink {
+  margin-top: 1rem;
+  text-align: center;
+  font-size: 0.9rem;
+}
+
+.card {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 12px 40px rgba(10,20,10,0.06);
+}
+
+.hero {
+  padding: 2rem;
+  background: linear-gradient(135deg, var(--primary-green), var(--secondary-green));
+  color: white;
+  display:flex;align-items:center;justify-content:center;flex-direction:column;
+}
+
+.hero h1 { margin:0; font-size:1.6rem }
+/* Force light title color for readability on green background */
+.hero h1 { 
+  background: none !important;
+  -webkit-background-clip: unset !important;
+  background-clip: unset !important;
+  -webkit-text-fill-color: initial !important;
+  color: rgba(255,255,255,0.95) !important;
+  text-shadow: 0 4px 14px rgba(0,0,0,0.18);
+}
+.hero p { color: rgba(255,255,255,0.92) !important; margin-top:0.5rem }
+
+.formWrap {
+  padding: 2rem;
+  background: #fff;
+  display:flex;
+  flex-direction:column;
+  gap:1rem;
+}
+
+.input { padding: 12px; border-radius:10px; border:1px solid rgba(20,20,20,0.06); width:100%;margin: 5px; }
+.button { padding: 12px; border-radius:10px; border:none; background: linear-gradient(90deg,#2E8B57,#3CB371); color:white; cursor:pointer; margin: 5px; }
+.alt { text-align:center; font-size:0.9rem; color: rgba(0,0,0,0.6) }
+
+@media (max-width:800px) { .card { grid-template-columns: 1fr } }
+  
